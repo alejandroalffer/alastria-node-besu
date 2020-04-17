@@ -12,7 +12,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
   orion:
-    image: pegasyseng/orion:develop
+    image: pegasyseng/orion:1.5.1
     depends_on:
       - postgres
     container_name: orion
@@ -36,7 +36,7 @@ services:
       retries: 10
 
   besu:
-    image: hyperledger/besu:1.4
+    image: hyperledger/besu:1.4.3
     container_name: besu
     environment:
       - BESU_P2P_HOST=${BESU_P2P_HOST}
@@ -78,7 +78,7 @@ services:
         "--node-name",
         "${NODE_NAME}",
         "--server-url",
-        "http://52.48.45.179:3000",
+        "http://sanbesu01.westeurope.cloudapp.azure.com:3000",
         "--client-url",
         "ws://besu:8546",
       ]
