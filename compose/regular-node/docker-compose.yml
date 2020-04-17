@@ -1,23 +1,43 @@
-version: "2"
+version: "3"
 services:
-  orion:
-    image: pegasyseng/orion:1.5.1-SNAPSHOT
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    ports:
+      - 5432
+    volumes:
+      - ./config/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
     environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  orion:
+    image: pegasyseng/orion:1.5.1
+    depends_on:
+      - postgres
+    container_name: orion
+    environment:
+      - ORION_NODEURL=${ORION_NODEURL}
       - LOG4J_CONFIGURATION_FILE=/config/orion/log-config.xml
-      - JAVA_OPTS=-Xms512m -Xmx4096m
     ports:
       - 8080:8080
     volumes:
       - ./config/orion:/config/orion
       - ./keys/orion:/keys/orion
+      - ./logs/orion:/var/log/
       - orion-database:/opt/orion/database
       - orion-routerdb:/opt/orion/routerdb
     command: ["/config/orion/orion.conf"]
-    mem_limit: 3584m
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/upcheck"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
 
   besu:
-    image: hyperledger/besu:1.4
+    image: hyperledger/besu:1.4.3
+    container_name: besu
     environment:
       - BESU_P2P_HOST=${BESU_P2P_HOST}
     depends_on:
@@ -36,6 +56,7 @@ services:
 
   prometheus:
     image: prom/prometheus:v2.15.2
+    container_name: prometheus
     depends_on:
       - besu
     ports:
@@ -45,22 +66,25 @@ services:
 
   ethstats-cli:
     image: alethio/ethstats-cli
+    container_name: ethstats
     depends_on:
       - besu
     entrypoint: ./bin/ethstats-cli.js
-    command: [
-      "--register",
-      "--account-email",
-      "${ACCOUNT_EMAIL}",
-      "--node-name",
-      "${NODE_NAME}",
-      "--server-url",
-      "http://52.48.45.179:3000",
-      "--client-url",
-      "ws://besu:8546"
-    ]
+    command:
+      [
+        "--register",
+        "--account-email",
+        "${ACCOUNT_EMAIL}",
+        "--node-name",
+        "${NODE_NAME}",
+        "--server-url",
+        "http://sanbesu01.westeurope.cloudapp.azure.com:3000",
+        "--client-url",
+        "ws://besu:8546",
+      ]
 
 volumes:
   orion-database:
   orion-routerdb:
   besu-database:
+  postgres-data:
