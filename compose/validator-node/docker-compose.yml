@@ -67,9 +67,12 @@ services:
   ethstats-cli:
     image: alethio/ethstats-cli
     container_name: ethstats-cli
+    restart: always
     depends_on:
       - besu
     entrypoint: ./bin/ethstats-cli.js
+    volumes:
+      - ./config/ethstats-cli/:/root/.config/configstore/
     command:
       [
         "--register",
