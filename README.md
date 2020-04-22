@@ -43,21 +43,25 @@ You'll need to open the following ports in both ways to deploy a node:
 
 ## Installation & configuration of
 
-### [Regular node] Besu node + Orion + Prometheus + Ethstats-cli with Docker Compose
+### Regular node
 
-- [Regular node Compose Guide](docs/regular-node-compose.md)
+Installation of a Regular node (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
 
-### [Validator node] Besu node + Orion + Prometheus + Ethstats-cli with Docker Compose
+- [Regular node Installation Guide](docs/regular-node-compose.md)
 
-- [Validator node Compose Guide](docs/validator-node-compose.md)
+### Validator node
 
-### Node monitoring
+Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
 
-- [Prometheus and Grafana Monitoring](docs/prometheus-grafana.md)
+- [Validator node Installation Guide](docs/validator-node-compose.md)
 
 ### Ethstats Server
 
-- [Installation Guide](docs/ethstats-installation.md)
+- [Ethstats Server Installation Guide](docs/ethstats-installation.md)
+
+### BlockExplorer
+
+- [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
 
 # Red B Monitor
 
