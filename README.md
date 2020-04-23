@@ -63,6 +63,10 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 - [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
 
+### Permissioning DApp
+
+- [Permissioning DApp](docs/permissioning-dapp)
+
 # Red B Monitor
 
 - [Red B Network Monitor (for Validators) - Hosted by Sngular](http://52.48.45.179)
