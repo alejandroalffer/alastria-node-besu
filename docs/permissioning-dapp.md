@@ -4,7 +4,7 @@ To launch the dApp for viewing and adding nodes and addresses to the network, ru
 
 ## Notes:
 
-- ::warning:: Change BESU_NODE_PERM_ENDPOINT IP with the IP of a node you can access
+- :warning: Change BESU_NODE_PERM_ENDPOINT IP with the IP of a node you can access
 - Use Metamask to "login" the DApp with an admin address in order to make changes
 
 ```sh
