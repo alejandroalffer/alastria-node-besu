@@ -65,7 +65,7 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 ### Permissioning DApp
 
-- [Permissioning DApp](docs/permissioning-dapp)
+- [Permissioning DApp](docs/permissioning-dapp.md)
 
 # Red B Monitor
 
