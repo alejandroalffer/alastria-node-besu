@@ -55,11 +55,11 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 - [Validator node Installation Guide](docs/validator-node-compose.md)
 
-### Tools - Ethstats Server
+### Tools - Network Monitor (Ethstats)
 
 - [Ethstats Server Installation Guide](docs/ethstats-installation.md)
 
-### Tools - BlockExplorer
+### Tools - Block Explorer
 
 - [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
 
@@ -69,7 +69,7 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 # Red B Monitor
 
-- [Red B Network Monitor (for Validators) - Hosted by Sngular](http://52.48.45.179)
+- [Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com:3000)
 - [Red B Block Explorer - Hosted by Eurogestión](http://5.153.57.78)
 
 # Red B Initial Schema (2020-01)

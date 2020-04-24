@@ -1,4 +1,4 @@
-# Tools - Ethstats Server and Dashboard installation guide
+# Tools - Network Monitor - Ethstats Server and Dashboard installation guide
 
 Use this procedure to create an Ethstats Server that recieves info from nodes and a dashboard to display it.
 
