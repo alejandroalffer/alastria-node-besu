@@ -3,11 +3,11 @@
 1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
 2. [Clone Repo](#clone-repo)
 3. [New Node](#new-node)
-    - [New Orion Configuration](#new-orion-configuration)
-    - [New Besu Configuration](#new-besu-configuration)
+   - [New Orion Configuration](#new-orion-configuration)
+   - [New Besu Configuration](#new-besu-configuration)
 4. [Existing Node](#existing-node)
-    - [Orion Configuration](#orion-configuration)
-    - [Besu Configuration](#besu-configuration)
+   - [Orion Configuration](#orion-configuration)
+   - [Besu Configuration](#besu-configuration)
 5. [Environment Variables](#environment-variables)
 6. [Launch Node](#launch-node)
 7. [Stop Node](#stop-node)
@@ -19,8 +19,9 @@ Follow this guide: [Docker Compose Intallation](https://docs.docker.com/compose/
 
 ## Clone Repo
 
-```
+```sh
 git clone https://github.com/alastria/alastria-node-besu.git
+```
 
 Navigate to [regular compose directory](../compose/regular-node)
 
@@ -33,11 +34,13 @@ cd alastria-node-besu/compose/regular-node
 ### New Orion configuration
 
 Create a password for your orion node private key
+
 ```sh
 echo passw0rd > keys/orion/passwordFile
 ```
 
 Generate your orion node key pair. This will prompt you to enter a password, use the same one you used in the passwordFile
+
 ```sh
 docker container run -v `pwd`/keys/orion:/keys/orion -w /keys/orion -it --rm pegasyseng/orion:1.5.1-SNAPSHOT -g nodekey
 ```
@@ -61,11 +64,13 @@ echo <signer-account-private-key> > keys/besu/signer.key
 ### Orion configuration
 
 Enter the password you used for your orion node private key
+
 ```sh
 echo <your_password> > keys/orion/passwordFile
 ```
 
 Copy and paste your orion key pair to `keys/orion`
+
 ```sh
 cp <existing-orion-private-key> keys/orion
 cp <existing-orion-public-key> keys/orion
@@ -125,7 +130,6 @@ Set the `NODE_NAME` environment variable to the name you want your node to displ
 export NODE_NAME=<company-regular-node>
 ```
 
-
 ## Launch Node
 
 To launch your node, run
@@ -133,6 +137,7 @@ To launch your node, run
 ```sh
 docker-compose up -d
 ```
+
 (The -d flag is to run in detached mode)
 
 ## Stop Node
