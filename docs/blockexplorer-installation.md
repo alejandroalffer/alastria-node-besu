@@ -1,4 +1,4 @@
-# Use Alethio Lite Explorer
+# Tools - Alethio Lite Explorer installation guide
 
 Use the Alethio Ethereum Lite Explorer to explore blockchain data at the block, transaction, and account level.
 

@@ -55,15 +55,15 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 - [Validator node Installation Guide](docs/validator-node-compose.md)
 
-### Ethstats Server
+### Tools - Ethstats Server
 
 - [Ethstats Server Installation Guide](docs/ethstats-installation.md)
 
-### BlockExplorer
+### Tools - BlockExplorer
 
 - [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
 
-### Permissioning DApp
+### Tools - Permissioning DApp
 
 - [Permissioning DApp](docs/permissioning-dapp.md)
 

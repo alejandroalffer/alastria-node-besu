@@ -1,4 +1,4 @@
-# Ethstats Server and Dashboard installation guide
+# Tools - Ethstats Server and Dashboard installation guide
 
 Use this procedure to create an Ethstats Server that recieves info from nodes and a dashboard to display it.
 
@@ -37,7 +37,7 @@ docker-compose up -d
 [Edited docker-compose.yml to allow remote connections](../configs/docker-compose.yml)
 
 ```yml
-version: '3.7'
+version: "3.7"
 services:
   server:
     container_name: ethstats-network-server
@@ -94,8 +94,8 @@ docker-compose up -d
 
 Your instance must have the following ports open:
 
-* 22 (ssh)
-* 80
-* 6020
-* 3030
-* 3000
+- 22 (ssh)
+- 80
+- 6020
+- 3030
+- 3000

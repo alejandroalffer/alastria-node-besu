@@ -1,8 +1,16 @@
-# Permissioning DApp
+# Tools - Permissioning DApp
 
 To launch the dApp for viewing and adding nodes and addresses to the network, run
 
-## Notes:
+## Prerequisites
+
+For the development server to run the dapp:
+
+- NodeJS v10.16.0 or later
+- Yarn v1.15 or later
+- Browser with MetaMask installed.
+
+## Notes
 
 - :warning: Change IP in BESU_NODE_PERM_ENDPOINT param with the IP of a node you can access
 - Use Metamask to "login" the DApp with an admin address in order to make changes
