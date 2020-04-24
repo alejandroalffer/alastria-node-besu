@@ -1,4 +1,4 @@
-# Regular Node Installation with Docker Compose
+# Regular Node Installation (with Docker Compose)
 
 1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
 2. [Clone Repo](#clone-repo)
@@ -11,6 +11,7 @@
 5. [Environment Variables](#environment-variables)
 6. [Launch Node](#launch-node)
 7. [Stop Node](#stop-node)
+8. [Request access to the network](#access)
 
 ## Docker and Docker Compose installation
 
@@ -19,13 +20,10 @@ Follow this guide: [Docker Compose Intallation](https://docs.docker.com/compose/
 
 ## Clone Repo
 
+Clone repo and navigate to [regular compose directory](../compose/regular-node)
+
 ```sh
 git clone https://github.com/alastria/alastria-node-besu.git
-```
-
-Navigate to [regular compose directory](../compose/regular-node)
-
-```sh
 cd alastria-node-besu/compose/regular-node
 ```
 
@@ -147,3 +145,23 @@ To stop your node, run
 ```sh
 docker-compose down
 ```
+
+## <a name="access"></a>Request access to the network
+
+For adding your new validator Node to the Alastria Red B network, please follow this steps:
+
+1. [Get your **enode**](#enode)
+2. [**Request the Registration of your node** in the network to Alastria Besu Core Team](#request_registration)
+
+### <a name="enode"></a>1. Get your enode
+
+```sh
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' http://127.0.0.1:8545
+```
+
+> :warning: _Write down this value (it is your **enode**)_
+
+### <a name="request_registration"></a>3. Request the registration of your Node
+
+- Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
+  - your **enode** (for registering your Node as a **Whitelisted Node** in the network)

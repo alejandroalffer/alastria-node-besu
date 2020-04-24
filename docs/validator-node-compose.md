@@ -1,16 +1,17 @@
-# Validator Node Installation with Docker Compose
+# Validator Node Installation (with Docker Compose)
 
 1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
 2. [Clone Repo](#clone-repo)
 3. [New Node](#new-node)
-    - [New Orion Configuration](#new-orion-configuration)
-    - [New Besu Configuration](#new-besu-configuration)
+   - [New Orion Configuration](#new-orion-configuration)
+   - [New Besu Configuration](#new-besu-configuration)
 4. [Existing Node](#existing-node)
-    - [Orion Configuration](#orion-configuration)
-    - [Besu Configuration](#besu-configuration)
+   - [Orion Configuration](#orion-configuration)
+   - [Besu Configuration](#besu-configuration)
 5. [Environment Variables](#environment-variables)
 6. [Launch Node](#launch-node)
 7. [Stop Node](#stop-node)
+8. [Request access to the network](#access)
 
 ## Docker and Docker Compose installation
 
@@ -19,12 +20,10 @@ Follow this guide: [Docker Compose Intallation](https://docs.docker.com/compose/
 
 ## Clone Repo
 
-```
-git clone https://github.com/alastria/alastria-node-besu.git
-
-Navigate to [validator compose directory](../compose/validator-node)
+Clone repo and navigate to [validator compose directory](../compose/validator-node)
 
 ```sh
+git clone https://github.com/alastria/alastria-node-besu.git
 cd alastria-node-besu/compose/validator-node
 ```
 
@@ -33,11 +32,13 @@ cd alastria-node-besu/compose/validator-node
 ### New Orion configuration
 
 Create a password for your orion node private key
+
 ```sh
 echo passw0rd > keys/orion/passwordFile
 ```
 
 Generate your orion node key pair. This will prompt you to enter a password, use the same one you used in the passwordFile
+
 ```sh
 docker container run -v `pwd`/keys/orion:/keys/orion -w /keys/orion -it --rm pegasyseng/orion:1.5.1-SNAPSHOT -g nodekey
 ```
@@ -61,11 +62,13 @@ echo <signer-account-private-key> > keys/besu/signer.key
 ### Orion configuration
 
 Enter the password you used for your orion node private key
+
 ```sh
 echo <your_password> > keys/orion/passwordFile
 ```
 
 Copy and paste your orion key pair to `keys/orion`
+
 ```sh
 cp <existing-orion-private-key> keys/orion
 cp <existing-orion-public-key> keys/orion
@@ -125,7 +128,6 @@ Set the `NODE_NAME` environment variable to the name you want your node to displ
 export NODE_NAME=<company-validator-node>
 ```
 
-
 ## Launch Node
 
 To launch your node, run
@@ -133,6 +135,7 @@ To launch your node, run
 ```sh
 docker-compose up -d
 ```
+
 (The -d flag is to run in detached mode)
 
 ## Stop Node
@@ -142,3 +145,34 @@ To stop your node, run
 ```sh
 docker-compose down
 ```
+
+## <a name="access"></a>Request access to the network
+
+For adding your new validator Node to the Alastria Red B network, please follow this steps:
+
+1. [Get your **enode**](#enode)
+2. [Get your **Node Address**](#node_address)
+3. [**Request the Registration of your node** in the network to Alastria Besu Core Team](#request_registration)
+
+### <a name="enode"></a>1. Get your enode
+
+```sh
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' http://127.0.0.1:8545
+```
+
+> :warning: _Write down this value (it is your **enode**)_
+
+### <a name="node_address"></a>2. Get your Node Address
+
+```sh
+$ cd $HOME/alastria-red-b/besu-node
+$ docker container run -v `pwd`:`pwd` -w `pwd` -it --rm besu --data-path=data public-key export-address --to=data/nodeAddress
+```
+
+> :warning: _Write down this value (it is your **Node Address**)_
+
+### <a name="request_registration"></a>3. Request the registration of your Node
+
+- Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
+  - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
+  - your **Node Address** (for voting up your node as a Validator)
