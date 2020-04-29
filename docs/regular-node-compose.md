@@ -12,8 +12,8 @@
 
 ## Docker and Docker Compose installation
 
-Follow this guide: [Docker Intallation](https://docs.docker.com/get-docker/)
-Follow this guide: [Docker Compose Intallation](https://docs.docker.com/compose/install/)
+Follow this guide: [Docker Installation](https://docs.docker.com/get-docker/)
+Follow this guide: [Docker Compose Installation](https://docs.docker.com/compose/install/)
 
 ## Clone Repo
 
