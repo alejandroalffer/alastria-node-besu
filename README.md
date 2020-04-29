@@ -53,7 +53,7 @@ Installation of a Regular node (Besu node + Prometheus) using Docker Compose
 
 Installation of a Regular node with support for Private Transactions (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
 
-- [Regular node Installation Guide](docs/regular-pro-node-compose.md)
+- [Regular Pro node Installation Guide](docs/regular-pro-node-compose.md)
 
 * :warning: Private Transactions are still considered "experimental" in the current implementation of Alastria Red B
 
