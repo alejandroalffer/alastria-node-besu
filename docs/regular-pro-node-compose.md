@@ -1,14 +1,17 @@
-# Regular Node Installation (with Docker Compose)
+# Regular Pro Node Installation (with Docker Compose)
 
 1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
 2. [Clone Repo](#clone-repo)
 3. [New Node](#new-node)
+   - [New Orion Configuration](#new-orion-configuration)
    - [New Besu Configuration](#new-besu-configuration)
 4. [Existing Node](#existing-node)
+   - [Orion Configuration](#orion-configuration)
    - [Besu Configuration](#besu-configuration)
-5. [Launch Node](#launch-node)
-6. [Stop Node](#stop-node)
-7. [Request access to the network](#access)
+5. [Environment Variables](#environment-variables)
+6. [Launch Node](#launch-node)
+7. [Stop Node](#stop-node)
+8. [Request access to the network](#access)
 
 ## Docker and Docker Compose installation
 
@@ -26,6 +29,20 @@ cd alastria-node-besu/compose/regular-node
 
 ## New Node
 
+### New Orion configuration
+
+Create a password for your orion node private key
+
+```sh
+echo passw0rd > keys/orion/passwordFile
+```
+
+Generate your orion node key pair. This will prompt you to enter a password, use the same one you used in the passwordFile
+
+```sh
+docker container run -v `pwd`/keys/orion:/keys/orion -w /keys/orion -it --rm pegasyseng/orion:1.5.1-SNAPSHOT -g nodekey
+```
+
 ### New Besu Configuration
 
 Generate your besu node key and place it under [keys/besu](../compose/regular-node/keys/besu)
@@ -41,6 +58,23 @@ echo <signer-account-private-key> > keys/besu/signer.key
 ```
 
 ## Existing Node
+
+### Orion configuration
+
+Enter the password you used for your orion node private key
+
+```sh
+echo <your_password> > keys/orion/passwordFile
+```
+
+Copy and paste your orion key pair to `keys/orion`
+
+```sh
+cp <existing-orion-private-key> keys/orion
+cp <existing-orion-public-key> keys/orion
+```
+
+TODO: backup orion database (docker-volumes)
 
 ### Besu Configuration
 
@@ -66,6 +100,32 @@ Copy the contents of your existing node database to the newly created volume. Fo
 
 ```sh
 sudo cp -r ~/alastria-red-b/besu-node/data/database/* /var/lib/docker/volumes/regular-node_besu-database/_data
+```
+
+## Environment Variables
+
+Set the `BESU_P2P_HOST` environment variable to the public IP address of your node
+
+```sh
+export BESU_P2P_HOST=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com`
+```
+
+Set the `ORION_NODEURL` environment variable to the public IP address of your node
+
+```sh
+export ORION_NODEURL=http://$BESU_P2P_HOST:8080
+```
+
+Set the `ACCOUNT_EMAIL` environment variable to your email
+
+```sh
+export ACCOUNT_EMAIL=<email@company.com>
+```
+
+Set the `NODE_NAME` environment variable to the name you want your node to display in ethstats
+
+```sh
+export NODE_NAME=<company-regular-node>
 ```
 
 ## Launch Node

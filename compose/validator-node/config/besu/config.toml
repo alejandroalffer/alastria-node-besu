@@ -17,5 +17,5 @@ metrics-port="9545"
 rpc-ws-enabled=true
 rpc-http-enabled=true
 rpc-http-host="127.0.0.1"
-rpc-http-api=["ETH","NET","IBFT","WEB3","ADMIN"]
+rpc-http-api=["ETH","NET","IBFT","WEB3","ADMIN","PERM"]
 logging="WARN"
