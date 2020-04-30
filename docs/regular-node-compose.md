@@ -35,21 +35,9 @@ Generate your besu node key and place it under [keys/besu](../compose/regular-no
 docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4 --data-path=/data public-key export --to=/data/key.pub
 ```
 
-Create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
-
-```sh
-echo <signer-account-private-key> > keys/besu/signer.key
-```
-
 ## Existing Node
 
 ### Besu Configuration
-
-Place the private key of your signer account in the `keys/besu/signer.key` file. If you don allready have a signer key, create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
-
-```sh
-echo <signer-account-private-key> > keys/besu/signer.key
-```
 
 Copy your existing node key to `keys/besu`
 
