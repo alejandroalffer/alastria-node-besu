@@ -6,9 +6,10 @@
    - [New Besu Configuration](#new-besu-configuration)
 4. [Existing Node](#existing-node)
    - [Besu Configuration](#besu-configuration)
-5. [Launch Node](#launch-node)
-6. [Stop Node](#stop-node)
-7. [Request access to the network](#access)
+5. [Environment Variables](#environment-variables)
+6. [Launch Node](#launch-node)
+7. [Stop Node](#stop-node)
+8. [Request access to the network](#access)
 
 ## Docker and Docker Compose installation
 
@@ -66,6 +67,14 @@ Copy the contents of your existing node database to the newly created volume. Fo
 
 ```sh
 sudo cp -r ~/alastria-red-b/besu-node/data/database/* /var/lib/docker/volumes/regular-node_besu-database/_data
+```
+
+## Environment Variables
+
+Set the `BESU_P2P_HOST` environment variable to the public IP address of your node
+
+```sh
+export BESU_P2P_HOST=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com`
 ```
 
 ## Launch Node

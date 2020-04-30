@@ -5,8 +5,6 @@ services:
     container_name: besu
     environment:
       - BESU_P2P_HOST=${BESU_P2P_HOST}
-    depends_on:
-      - orion
     ports:
       - 30303:30303/udp
       - 30303:30303/tcp

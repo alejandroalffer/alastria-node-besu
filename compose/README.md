@@ -12,7 +12,7 @@ Installation of a Regular node with support for Private Transactions (Besu node 
 
 - [Regular node Installation Guide](../docs/regular-pro-node-compose.md)
 
-* .warning: Private Transactions is still considered "experimental" in the current implementation of Alastria Red B
+* :warning: Private Transactions is still considered "experimental" in the current implementation of Alastria Red B
 
 ## Validator Node
 
