@@ -64,28 +64,6 @@ services:
     volumes:
       - ./config/prometheus:/etc/prometheus
 
-  ethstats-cli:
-    image: alethio/ethstats-cli
-    container_name: ethstats-cli
-    restart: always
-    depends_on:
-      - besu
-    entrypoint: ./bin/ethstats-cli.js
-    volumes:
-      - ./config/ethstats-cli/:/root/.config/configstore/
-    command:
-      [
-        "--register",
-        "--account-email",
-        "${ACCOUNT_EMAIL}",
-        "--node-name",
-        "${NODE_NAME}",
-        "--server-url",
-        "http://sanbesu01.westeurope.cloudapp.azure.com:3000",
-        "--client-url",
-        "ws://besu:8546",
-      ]
-
 volumes:
   orion-database:
   orion-routerdb:

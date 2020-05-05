@@ -116,18 +116,6 @@ Set the `ORION_NODEURL` environment variable to the public IP address of your no
 export ORION_NODEURL=http://$BESU_P2P_HOST:8080
 ```
 
-Set the `ACCOUNT_EMAIL` environment variable to your email
-
-```sh
-export ACCOUNT_EMAIL=<email@company.com>
-```
-
-Set the `NODE_NAME` environment variable to the name you want your node to display in ethstats
-
-```sh
-export NODE_NAME=<company-regular-node>
-```
-
 ## Launch Node
 
 To launch your node, run
