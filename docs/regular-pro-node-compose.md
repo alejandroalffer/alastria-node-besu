@@ -121,17 +121,15 @@ export ORION_NODEURL=http://$BESU_P2P_HOST:8080
 To launch your node, run
 
 ```sh
-docker-compose up -d
+./start.sh
 ```
-
-(The -d flag is to run in detached mode)
 
 ## Stop Node
 
 To stop your node, run
 
 ```sh
-docker-compose down
+./stop.sh
 ```
 
 ## <a name="access"></a>Request access to the network
