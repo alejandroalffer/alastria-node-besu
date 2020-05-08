@@ -9,8 +9,8 @@
 
 ## Install Docker and Docker Compose
 
-Follow this guide: [Docker Installation](https://docs.docker.com/get-docker/)
-Follow this guide: [Docker Compose Installation](https://docs.docker.com/compose/install/)
+- Follow this guide: [Docker Installation](https://docs.docker.com/get-docker/)
+- Follow this guide: [Docker Compose Installation](https://docs.docker.com/compose/install/)
 
 ## Clone Repo
 
@@ -86,7 +86,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 > :warning: _Write down this value (it is your **enode**)_
 
-### <a name="request_registration"></a>3. Request the registration of your Node
+### <a name="request_registration"></a>2. Request the registration of your Node
 
 - Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
   - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
