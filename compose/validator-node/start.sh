@@ -9,7 +9,7 @@ export ORION_NODEURL="http://"$BESU_P2P_HOST":8080/"
 export ACCOUNT_EMAIL=*********************************************YOUR@EMAIL.HERE
 
 # Set the NODE_NAME environment variable to the name you want your node to display in ethstats
-export NODE_NAME=*************************************************YOUR_NODENAME_HERE-REGULAR
+export NODE_NAME=*************************************************VALIDATOR-YOUR_NODENAME_HERE
 
 # Start containers
 docker-compose up -d

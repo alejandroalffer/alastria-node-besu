@@ -1,19 +1,13 @@
 # Regular Pro Node Installation (with Docker Compose)
 
-1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
+1. [Install Docker and Docker Compose](#install-docker-and-docker-compose)
 2. [Clone Repo](#clone-repo)
-3. [New Node](#new-node)
-   - [New Orion Configuration](#new-orion-configuration)
-   - [New Besu Configuration](#new-besu-configuration)
-4. [Existing Node](#existing-node)
-   - [Orion Configuration](#orion-configuration)
-   - [Besu Configuration](#besu-configuration)
-5. [Environment Variables](#environment-variables)
-6. [Launch Node](#launch-node)
-7. [Stop Node](#stop-node)
-8. [Request access to the network](#access)
+3. [Configure Node](#configure-node)
+4. [Launch Node](#launch-node)
+5. [Stop Node](#stop-node)
+6. [Request access to the network](#access)
 
-## Docker and Docker Compose installation
+## Install Docker and Docker Compose
 
 Follow this guide: [Docker Installation](https://docs.docker.com/get-docker/)
 Follow this guide: [Docker Compose Installation](https://docs.docker.com/compose/install/)
@@ -27,9 +21,11 @@ git clone https://github.com/alastria/alastria-node-besu.git
 cd alastria-node-besu/compose/regular-node
 ```
 
-## New Node
+## Configure Node
 
-### New Orion configuration
+### Option A: Setting up a New Node
+
+#### New Orion configuration
 
 Create a password for your orion node private key
 
@@ -43,7 +39,7 @@ Generate your orion node key pair. This will prompt you to enter a password, use
 docker container run -v `pwd`/keys/orion:/keys/orion -w /keys/orion -it --rm pegasyseng/orion:1.5.1-SNAPSHOT -g nodekey
 ```
 
-### New Besu Configuration
+#### New Besu Configuration
 
 Generate your besu node key and place it under [keys/besu](../compose/regular-node/keys/besu)
 
@@ -57,7 +53,7 @@ Create a new ethereum account (for example, using metamask) and place its privat
 echo <signer-account-private-key> > keys/besu/signer.key
 ```
 
-## Existing Node
+### Option B: Updating an existing Node
 
 ### Orion configuration
 
@@ -76,7 +72,7 @@ cp <existing-orion-public-key> keys/orion
 
 TODO: backup orion database (docker-volumes)
 
-### Besu Configuration
+#### Besu Configuration
 
 Place the private key of your signer account in the `keys/besu/signer.key` file. If you don allready have a signer key, create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
 
@@ -100,20 +96,6 @@ Copy the contents of your existing node database to the newly created volume. Fo
 
 ```sh
 sudo cp -r ~/alastria-red-b/besu-node/data/database/* /var/lib/docker/volumes/regular-node_besu-database/_data
-```
-
-## Environment Variables
-
-Set the `BESU_P2P_HOST` environment variable to the public IP address of your node
-
-```sh
-export BESU_P2P_HOST=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com`
-```
-
-Set the `ORION_NODEURL` environment variable to the public IP address of your node
-
-```sh
-export ORION_NODEURL=http://$BESU_P2P_HOST:8080
 ```
 
 ## Launch Node
@@ -151,3 +133,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 - Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
   - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
+  - **any Address** you want to send transactions from (for adding to the Accounts Whitelist)

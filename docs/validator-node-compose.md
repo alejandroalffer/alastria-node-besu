@@ -102,27 +102,17 @@ Copy the contents of your existing node database to the newly created volume. Fo
 sudo cp -r ~/alastria-red-b/besu-node/data/database/* /var/lib/docker/volumes/validator-node_besu-database/_data
 ```
 
-## Environment Variables
+## Environment Variables edition
 
-Set the `BESU_P2P_HOST` environment variable to the public IP address of your node
+Edit the next Environment Variables in ./start.sh file:
 
-```sh
-export BESU_P2P_HOST=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com`
-```
-
-Set the `ORION_NODEURL` environment variable to the public IP address of your node
-
-```sh
-export ORION_NODEURL=http://$BESU_P2P_HOST:8080
-```
-
-Set the `ACCOUNT_EMAIL` environment variable to your email
+1. Set the `ACCOUNT_EMAIL` environment variable to your contact email
 
 ```sh
 export ACCOUNT_EMAIL=<email@company.com>
 ```
 
-Set the `NODE_NAME` environment variable to the name you want your node to display in ethstats
+2. Set the `NODE_NAME` environment variable to the name you want your node to display in ethstats (Format: "VALIDATOR-your_company_name"; example: "VALIDATOR-EUROGESTION")
 
 ```sh
 export NODE_NAME=<company-validator-node>

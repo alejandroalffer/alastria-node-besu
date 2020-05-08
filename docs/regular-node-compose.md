@@ -1,17 +1,13 @@
 # Regular Node Installation (with Docker Compose)
 
-1. [Docker and Docker Compose installation](#docker-and-docker-compose-installation)
+1. [Install Docker and Docker Compose](#install-docker-and-docker-compose)
 2. [Clone Repo](#clone-repo)
-3. [New Node](#new-node)
-   - [New Besu Configuration](#new-besu-configuration)
-4. [Existing Node](#existing-node)
-   - [Besu Configuration](#besu-configuration)
-5. [Environment Variables](#environment-variables)
-6. [Launch Node](#launch-node)
-7. [Stop Node](#stop-node)
-8. [Request access to the network](#access)
+3. [Configure Node](#configure-node)
+4. [Launch Node](#launch-node)
+5. [Stop Node](#stop-node)
+6. [Request access to the network](#access)
 
-## Docker and Docker Compose installation
+## Install Docker and Docker Compose
 
 Follow this guide: [Docker Installation](https://docs.docker.com/get-docker/)
 Follow this guide: [Docker Compose Installation](https://docs.docker.com/compose/install/)
@@ -25,9 +21,11 @@ git clone https://github.com/alastria/alastria-node-besu.git
 cd alastria-node-besu/compose/regular-node
 ```
 
-## New Node
+## Configure Node
 
-### New Besu Configuration
+### Option A: Setting up a New Node
+
+#### New Besu Configuration
 
 Generate your besu node key and place it under [keys/besu](../compose/regular-node/keys/besu)
 
@@ -35,9 +33,9 @@ Generate your besu node key and place it under [keys/besu](../compose/regular-no
 docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4 --data-path=/data public-key export --to=/data/key.pub
 ```
 
-## Existing Node
+### Option B: Updating an existing Node
 
-### Besu Configuration
+#### Besu Configuration
 
 Copy your existing node key to `keys/besu`
 
@@ -55,14 +53,6 @@ Copy the contents of your existing node database to the newly created volume. Fo
 
 ```sh
 sudo cp -r ~/alastria-red-b/besu-node/data/database/* /var/lib/docker/volumes/regular-node_besu-database/_data
-```
-
-## Environment Variables
-
-Set the `BESU_P2P_HOST` environment variable to the public IP address of your node
-
-```sh
-export BESU_P2P_HOST=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com`
 ```
 
 ## Launch Node
@@ -100,3 +90,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 - Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
   - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
+  - **any Address** you want to send transactions from (for adding to the Accounts Whitelist)
