@@ -121,7 +121,7 @@ In all the bootnodes, we have created a Signing Key file for registering the mar
 $ vi $HOME/alastria-red-b/besu-node/signer.key
 ```
 
-- Copy and paste in this file **the SignerKey of this node**
+- Copy and paste in this file **the SigningKey of this node**
 
 ---
 

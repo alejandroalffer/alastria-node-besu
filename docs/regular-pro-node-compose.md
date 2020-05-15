@@ -47,11 +47,13 @@ Generate your besu node key and place it under [keys/besu](../compose/regular-no
 docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4 --data-path=/data public-key export --to=/data/key.pub
 ```
 
-Create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
+Create a new ethereum account (for example, using metamask) and place its **private key** in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
 
 ```sh
 echo <signer-account-private-key> > keys/besu/signer.key
 ```
+
+> :warning: _Write down the value of the **public address** associated to this key pair (it is your **SigningKey Public Address**). You will need it for registering as a Whitelisted Account in the network_
 
 ### Option B: Updating an existing Node
 
@@ -119,7 +121,8 @@ To stop your node, run
 For adding your new validator Node to the Alastria Red B network, please follow this steps:
 
 1. [Get your **enode**](#enode)
-2. [**Request the Registration of your node** in the network to Alastria Besu Core Team](#request_registration)
+2. [Get your **SigningKey Public Address**](#signing_key_public_address)
+3. [**Request the Registration of your node** in the network to Alastria Besu Core Team](#request_registration)
 
 ### <a name="enode"></a>1. Get your enode
 
@@ -129,8 +132,15 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 > :warning: _Write down this value (it is your **enode**)_
 
-### <a name="request_registration"></a>2. Request the registration of your Node
+##### <a name="signing_key_public_address"></a>2. Get your SigningKey Public Address
+
+In [Configure Node](#configure-node) you created a new SigningKey key pair.
+
+> :warning: _Write down the value of the **public address** associated to this key pair (it is your **SigningKey Public Address**)_
+
+### <a name="request_registration"></a>3. Request the registration of your Node
 
 - Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
   - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
+  - your **SigningKey Public Address** (for adding to the Accounts Whitelist)
   - **any Address** you want to send transactions from (for adding to the Accounts Whitelist)
