@@ -77,7 +77,7 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 # Red B Monitor
 
-- [Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com:3000)
+- [Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com)
 - [Red B Block Explorer - Hosted by Eurogestión](http://5.153.57.78)
 - [Red B Permissioning DApp - Hosted by Eurogestión](http://5.153.57.78:3000/)
 
