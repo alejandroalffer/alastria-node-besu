@@ -1,5 +1,6 @@
 # ALASTRIA Red B
-
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://alastria.slack.com/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/alastria/alastria-node/blob/testnet2/LICENSE)
 - Visit [What is alastria](https://alastria.io/en/) page to know more about us.
 
 This page contains technical information needed to add a node in the Alastria Besu Network (Alastria Red B)
