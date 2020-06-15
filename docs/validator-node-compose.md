@@ -15,7 +15,7 @@
 
 ## Docker and Docker Compose installation
 
-Follow this guide: https://github.com/fmidev/smartmet-server/wiki/Setting-up-Docker-and-Docker-Compose-(Ubuntu-16.04-and-18.04.1)
+- Follow this guide: (docker-installation.md)
 
 ## Clone Repo
 
