@@ -13,7 +13,7 @@
 
 ## Clone Repo
 
-Clone repo and navigate to [regular compose directory](../compose/regular-node)
+Clone repo and navigate to [regular-pro compose directory](../compose/regular-pro-node)
 
 ```sh
 git clone https://github.com/alastria/alastria-node-besu.git
@@ -40,13 +40,13 @@ docker container run -v `pwd`/keys/orion:/keys/orion -w /keys/orion -it --rm peg
 
 #### New Besu Configuration
 
-Generate your besu node key and place it under [keys/besu](../compose/regular-node/keys/besu)
+Generate your besu node key and place it under [keys/besu](../compose/regular-pro-node/keys/besu)
 
 ```sh
 docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4 --data-path=/data public-key export --to=/data/key.pub
 ```
 
-Create a new ethereum account (for example, using metamask) and place its **private key** in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
+Create a new ethereum account (for example, using metamask) and place its **private key** in the [keys/besu/signer.key](../compose/regular-pro-node/keys/besu/signer.key) file
 
 ```sh
 echo <signer-account-private-key> > keys/besu/signer.key
@@ -75,7 +75,7 @@ TODO: backup orion database (docker-volumes)
 
 #### Besu Configuration
 
-Place the private key of your signer account in the `keys/besu/signer.key` file. If you don allready have a signer key, create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-node/keys/besu/signer.key) file
+Place the private key of your signer account in the `keys/besu/signer.key` file. If you don allready have a signer key, create a new ethereum account (for example, using metamask) and place its private key in the [keys/besu/signer.key](../compose/regular-pro-node/keys/besu/signer.key) file
 
 ```sh
 echo <signer-account-private-key> > keys/besu/signer.key
