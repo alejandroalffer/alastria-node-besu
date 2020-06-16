@@ -17,7 +17,7 @@ Clone repo and navigate to [regular compose directory](../compose/regular-node)
 
 ```sh
 git clone https://github.com/alastria/alastria-node-besu.git
-cd alastria-node-besu/compose/regular-node
+cd alastria-node-besu/compose/regular-pro-node
 ```
 
 ## Configure Node
