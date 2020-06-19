@@ -9,21 +9,12 @@ services:
       - 30303:30303/udp
       - 30303:30303/tcp
       - 8545:8545
+      - 9545:9545
     volumes:
       - ./config/besu:/config/besu/
       - ./keys/besu/key:/opt/besu/data/key
       - besu-database:/opt/besu/data/database
     command: ["--config-file=/config/besu/config.toml"]
-
-  prometheus:
-    image: prom/prometheus:v2.15.2
-    container_name: prometheus
-    depends_on:
-      - besu
-    ports:
-      - 9090:9090
-    volumes:
-      - ./config/prometheus:/etc/prometheus
 
 volumes:
   besu-database:
