@@ -1,6 +1,8 @@
 # ALASTRIA Red B
+
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://alastria.slack.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/alastria/alastria-node/blob/testnet2/LICENSE)
+
 - Visit [What is alastria](https://alastria.io/en/) page to know more about us.
 
 This page contains technical information needed to add a node in the Alastria Besu Network (Alastria Red B)
@@ -64,9 +66,9 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 - [Validator node Installation Guide](docs/validator-node-compose.md)
 
-### Tools - Network Monitor (Ethstats)
+<!--### Tools - Network Monitor (Ethstats) -->
 
-- [Ethstats Server Installation Guide](docs/ethstats-installation.md)
+<!-- - [Ethstats Server Installation Guide](docs/ethstats-installation.md) -->
 
 ### Tools - Block Explorer
 
@@ -78,7 +80,8 @@ Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli)
 
 # Red B Monitor
 
-- [Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com)
+<!--[Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com) -->
+
 - [Red B Block Explorer - Hosted by Eurogestión](http://5.153.57.78)
 - [Red B Permissioning DApp - Hosted by Eurogestión](http://5.153.57.78:3000/)
 
