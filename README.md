@@ -25,36 +25,35 @@ You'll need to open the following ports in both ways to deploy a node:
 
 ##### Validator Node
 
-| Port  | Type | Definition                                        |
-| :---: | :--: | :------------------------------------------------ |
-| 30303 | TCP  | Ethereum client listener and discovery ports      |
-| 30303 | UDP  | Ethereum client listener and discovery ports      |
-| 8080  | TCP  | Orion port (private transactions)                 |
-| 8546  | TCP  | RPC WS Port (internal only - for Ethstats client) |
-| 9090  | TCP  | Prometheus metrics                                |
+| Port  | Type |      To       | Definition                                   |
+| :---: | :--: | :-----------: | :------------------------------------------- |
+| 30303 | TCP  |    0.0.0.0    | Ethereum client listener and discovery ports |
+| 30303 | UDP  |    0.0.0.0    | Ethereum client listener and discovery ports |
+| 8080  | TCP  |    0.0.0.0    | Orion port (private transactions)            |
+| 9545  | TCP  | 185.180.8.152 | External Prometheus metrics                  |
 
 ##### Regular Node
 
-| Port  | Type | Definition                                   |
-| :---: | :--: | :------------------------------------------- |
-| 30303 | TCP  | Ethereum client listener and discovery ports |
-| 30303 | UDP  | Ethereum client listener and discovery ports |
-| 8080  | TCP  | Orion port (private transactions)            |
-| 8545  | TCP  | RPC HTPP Port (this can be internal only)    |
-| 8546  | TCP  | RPC WS Port (this can be internal only)      |
-| 9090  | TCP  | Prometheus metrics                           |
+| Port  | Type |                 To                  | Definition                                   |
+| :---: | :--: | :---------------------------------: | :------------------------------------------- |
+| 30303 | TCP  |               0.0.0.0               | Ethereum client listener and discovery ports |
+| 30303 | UDP  |               0.0.0.0               | Ethereum client listener and discovery ports |
+| 8080  | TCP  |               0.0.0.0               | Orion port (private transactions)            |
+| 8545  | TCP  | 0.0.0.0 (this can be internal only) | RPC HTPP Port                                |
+| 8546  | TCP  | 0.0.0.0 (this can be internal only) | RPC WS Port                                  |
+| 9545  | TCP  |            185.180.8.152            | External Prometheus metrics                  |
 
 ## Installation & configuration of
 
 ### Regular node
 
-Installation of a Regular node (Besu node + Prometheus) using Docker Compose
+Installation of a Regular node (Besu node) using Docker Compose
 
 - [Regular node Installation Guide](docs/regular-node-compose.md)
 
 ### Regular Pro node
 
-Installation of a Regular node with support for Private Transactions (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
+Installation of a Regular node with support for Private Transactions (Besu node + Orion) using Docker Compose
 
 - [Regular Pro node Installation Guide](docs/regular-pro-node-compose.md)
 
@@ -62,13 +61,9 @@ Installation of a Regular node with support for Private Transactions (Besu node 
 
 ### Validator node
 
-Installation of a Validator node (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
+Installation of a Validator node (Besu node + Orion) using Docker Compose
 
 - [Validator node Installation Guide](docs/validator-node-compose.md)
-
-<!--### Tools - Network Monitor (Ethstats) -->
-
-<!-- - [Ethstats Server Installation Guide](docs/ethstats-installation.md) -->
 
 ### Tools - Block Explorer
 

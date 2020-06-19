@@ -2,13 +2,13 @@
 
 ## Regular node
 
-Installation of a Regular node (Besu node + Prometheus) using Docker Compose
+Installation of a Regular node (Besu node) using Docker Compose
 
 - [Regular node Installation Guide](../docs/regular-node-compose.md)
 
 ## Regular Pro node
 
-Installation of a Regular node with support for Private Transactions (Besu node + Orion + Prometheus + Ethstats-cli) using Docker Compose
+Installation of a Regular node with support for Private Transactions (Besu node + Orion) using Docker Compose
 
 - [Regular node Installation Guide](../docs/regular-pro-node-compose.md)
 
@@ -16,6 +16,6 @@ Installation of a Regular node with support for Private Transactions (Besu node 
 
 ## Validator Node
 
-Here you will find the guide on how to install a Besu Validator node along with an Orion node, an Ethstats client and Prometheus:
+Here you will find the guide on how to install a Besu Validator node along with an Orion node:
 
 - [Validator node Compose Guide](../docs/validator-node-compose.md)
