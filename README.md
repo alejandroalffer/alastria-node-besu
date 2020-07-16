@@ -39,7 +39,7 @@ You'll need to open the following ports in both ways to deploy a node:
 | 30303 | TCP  |               0.0.0.0               | Ethereum client listener and discovery ports |
 | 30303 | UDP  |               0.0.0.0               | Ethereum client listener and discovery ports |
 | 8080  | TCP  |               0.0.0.0               | Orion port (private transactions)            |
-| 8545  | TCP  | 0.0.0.0 (this can be internal only) | RPC HTPP Port                                |
+| 8545  | TCP  | 0.0.0.0 (this can be internal only) | RPC HTTP Port                                |
 | 8546  | TCP  | 0.0.0.0 (this can be internal only) | RPC WS Port                                  |
 | 9545  | TCP  |            185.180.8.152            | External Prometheus metrics                  |
 
