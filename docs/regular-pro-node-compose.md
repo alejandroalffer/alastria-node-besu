@@ -115,9 +115,15 @@ To stop your node, run
 ./stop.sh
 ```
 
+If you can't execute the scripts, run
+
+```sh
+sudo chmod +x ./start.sh ./stop.sh
+```
+
 ## <a name="access"></a>Request access to the network
 
-For adding your new validator Node to the Alastria Red B network, please follow this steps:
+For adding your new Regular Pro Node to the Alastria Red B network, please follow this steps:
 
 1. [Get your **enode**](#enode)
 2. [Get your **SigningKey Public Address**](#signing_key_public_address)
