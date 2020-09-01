@@ -151,9 +151,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 ### <a name="node_address"></a>2. Get your Node Address
 
+How to obtain nodeAddress. From the docker-compose.yaml folder, run. You'll get it in ./keys/besu/nodeAddress
+
 ```sh
-$ cd $HOME/alastria-red-b/besu-node
-$ docker container run -v `pwd`:`pwd` -w `pwd` -it --rm besu --data-path=data public-key export-address --to=data/nodeAddress
+docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4.3 --data-path=/data public-key export-address --to=/data/nodeAddress
 ```
 
 > :warning: _Write down this value (it is your **Node Address**)_
