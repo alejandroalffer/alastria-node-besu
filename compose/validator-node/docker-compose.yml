@@ -49,6 +49,7 @@ services:
       - 9545:9545
     volumes:
       - ./config/besu:/config/besu/
+      - ./static-nodes.json:/opt/besu/data/static-nodes.json
       - ./keys/besu/key:/opt/besu/data/key
       - ./keys/besu/signer.key:/keys/besu/signer.key
       - ./keys/orion/nodekey.pub:/keys/orion/orion.pub
