@@ -20,7 +20,7 @@ services:
       - ORION_NODEURL=${ORION_NODEURL}
       - LOG4J_CONFIGURATION_FILE=/config/orion/log-config.xml
     ports:
-      - 8080:8080
+      - 8080:8080/tcp
     volumes:
       - ./config/orion:/config/orion
       - ./keys/orion:/keys/orion
@@ -45,8 +45,8 @@ services:
     ports:
       - 30303:30303/udp
       - 30303:30303/tcp
-      - 8545:8545
-      - 9545:9545
+      - 8545:8545/tcp
+      - 9545:9545/tcp
     volumes:
       - ./config/besu:/config/besu/
       - ./static-nodes.json:/opt/besu/data/static-nodes.json

@@ -4,7 +4,7 @@ services:
     image: postgres:12
     container_name: postgres
     ports:
-      - 5432
+      - 5432/tcp
     volumes:
       - ./config/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres-data:/var/lib/postgresql/data
@@ -20,7 +20,7 @@ services:
       - ORION_NODEURL=${ORION_NODEURL}
       - LOG4J_CONFIGURATION_FILE=/config/orion/log-config.xml
     ports:
-      - 8080:8080
+      - 8080:8080/tcp
     volumes:
       - ./config/orion:/config/orion
       - ./keys/orion:/keys/orion
@@ -45,8 +45,8 @@ services:
     ports:
       - 30303:30303/udp
       - 30303:30303/tcp
-      - 8545:8545
-      - 9545:9545
+      - 8545:8545/tcp
+      - 9545:9545/tcp
     volumes:
       - ./config/besu:/config/besu/
       - ./keys/besu/key:/opt/besu/data/key

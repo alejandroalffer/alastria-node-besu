@@ -75,8 +75,7 @@ Installation of a Validator node (Besu node + Orion) using Docker Compose
 
 # Red B Monitor
 
-<!--[Red B Network Monitor (for Validators)](http://sanbesu01.westeurope.cloudapp.azure.com) -->
-
+- [Red B Network Monitor](https://alastria-netstats2.planisys.net:8443/?orgId=1)
 - [Red B Block Explorer - Hosted by Eurogestión](http://5.153.57.78)
 - [Red B Permissioning DApp - Hosted by Eurogestión](http://5.153.57.78:3000/)
 
