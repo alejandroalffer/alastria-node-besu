@@ -13,7 +13,7 @@
 
 ## Clone Repo
 
-Clone repo and navigate to *alastria-node-besu/compose/regular-node*
+Clone repo and navigate to _alastria-node-besu/compose/regular-node_
 
 ```sh
 git clone https://github.com/alastria/alastria-node-besu.git
@@ -26,7 +26,7 @@ cd alastria-node-besu/compose/regular-node
 
 #### New Besu Configuration
 
-Generate your besu node key and place it under *alastria-node-besu/compose/regular-node/keys/besu*
+Generate your besu node key and place it under _alastria-node-besu/compose/regular-node/keys/besu_
 
 ```sh
 docker container run -v `pwd`/keys/besu:/data -w /data -it --rm hyperledger/besu:1.4 --data-path=/data public-key export --to=/data/key.pub
@@ -91,4 +91,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 - Follow the [Guide in the Wiki](https://github.com/alastria/alastria-node-besu/wiki#0-permissioning), sending:
   - your **enode** (for registering your Node as a **Whitelisted Node** in the network)
-  - **any Address** you want to send transactions from (for adding to the Accounts Whitelist)
+  <!--  - **any Address** you want to send transactions from (for adding to the Accounts Whitelist) -->
