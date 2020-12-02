@@ -1,0 +1,31 @@
+# Valid TOML config file
+data-path="/data/alastria-node-besu/validator"
+logging="INFO"
+
+#Network
+bootnodes=["enode://20c1378ff3b8ce6e53b914a413f00e2590ee85491af529f976aef8cff96a649afff14262dee0273ed7a11ca2adc8a6f7918c0a42303a2e13cbea8a89961425ad@54.216.131.145:30303","enode://d932021d575318127df537f788195195c13c7084db3376c0f030b68dae32f3ce44291b9aadad1451c8857a84d9c9be3253a7ac7cd429bc3fe930427e26043a28@13.80.245.21:30303","enode://2ef6f6ca6c3486aad6c13fb0aa214e87ab4884aa3acb6b256f7ba36f62b53d3123e5fa4c3475d52f839e471a0f1fab14ffc7c8e8072e79ccb12e4c8114f87f6c@5.153.57.74:30303"]
+node-private-key-file="/data/alastria-node-besu/validator/keys/besu/key"
+
+discovery-enabled=false
+
+permissions-accounts-contract-address="0x0000000000000000000000000000000000008888"
+permissions-accounts-contract-enabled=false
+permissions-nodes-contract-address="0x0000000000000000000000000000000000009999"
+permissions-nodes-contract-enabled=true
+
+# Chain
+genesis-file="/data/alastria-node-besu/validator/config/besu/genesis.json"
+min-gas-price=0
+
+rpc-http-api=["ETH","NET","IBFT","WEB3","ADMIN"]
+rpc-http-enabled=true
+rpc-http-host="0.0.0.0"
+host-whitelist=["*"]
+
+# WS
+rpc-ws-enabled=true
+
+# Metrics
+metrics-enabled=true
+metrics-host="0.0.0.0"
+metrics-port="9545"
