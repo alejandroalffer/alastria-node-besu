@@ -1,6 +1,6 @@
 # Regular Node Installation (with Binaries)
 
-If not created, createa a symbolic link to the binaries (*bin*) and the *lib* directory of the Besu version you are interested in.
+If not created, createa a symbolic link to the binaries (_bin_) and the _lib_ directory of the Besu version you are interested in.
 
 ```sh
 cd validator
@@ -10,7 +10,7 @@ ln -s /mnt/alastria-node-besu/versionesBesu/besu-1.4.3/lib lib
 
 ## Besu node configuration
 
-In the directory **config** are the files *config.toml* and *genesis.json*.
+In the directory **config** are the files _config.toml_ and _genesis.json_.
 
 A new private key will be created and the public key and node address will be obtained. The following commands will be executed.
 
@@ -28,7 +28,7 @@ mv key.pub keys/besu
 mv nodeAddress keys/besu
 ```
 
-In order to control the Node logs, Besu allows you to [configure your logs](https://besu.hyperledger.org/en/1.3.0-rc1/HowTo/Troubleshoot/Logging/) thanks to [log4j2](https://logging.apache.org/log4j/2.x/manual/configuration.html), being able to change the format in which you take them out, if you make rotations, if you compress the new files, how many you save and where you save them, etc. To do this, a file called **log-config.xml** is stored in *config/besu*.
+In order to control the Node logs, Besu allows you to [configure your logs](https://besu.hyperledger.org/en/1.3.0-rc1/HowTo/Troubleshoot/Logging/) thanks to [log4j2](https://logging.apache.org/log4j/2.x/manual/configuration.html), being able to change the format in which you take them out, if you make rotations, if you compress the new files, how many you save and where you save them, etc. To do this, a file called **log-config.xml** is stored in _config/besu_.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -68,7 +68,7 @@ In order to control the Node logs, Besu allows you to [configure your logs](http
 
 In this case, the configuration that has been decided on is as follows.
 
-- Both for the logs displayed on the console and for those stored in the rotated files will be the standard (can be changed to *json* format or other formats allowed by the tool).
+- Both for the logs displayed on the console and for those stored in the rotated files will be the standard (can be changed to _json_ format or other formats allowed by the tool).
 - It will generate a rotated log file when
   - The Besu Service is restarted whenever the file size is greater than 10 KB (`OnStartupTriggeringPolicy minSize="10240"`).
   - Once a day (`TimeBasedTriggeringPolicy`).
@@ -133,7 +133,7 @@ RestartSec=30
 WantedBy=multi-user.target
 ```
 
-Once the *besu.services* file has been saved, this service is started. The following commands will be executed.
+Once the _besu.services_ file has been saved, this service is started. The following commands will be executed.
 
 To let the system know that there is a new daemon that must be started at every boot, the following will be executed:
 
@@ -210,7 +210,3 @@ lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> ../versionBesu/besu-1.5.0/li
 drwxrwxr-x 2 besu besu     4096 Oct 28 16:59 logs/
 drwxrwxr-x 2 besu besu     4096 Oct 21 14:54 uploads/
 ```
-
-## How to deploy your Smart Contracts
-
-Hacer docu

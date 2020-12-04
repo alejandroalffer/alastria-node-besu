@@ -47,23 +47,24 @@ You'll need to open the following ports in both ways to deploy a node:
 
 ### Regular node
 
-Use the *regular* directory
+Use the _regular_ directory
 
 - [Regular node Installation Guide](regular/Configuration&Installation.md)
 
 ### Validator node
 
-Use the *validator* directory
+Use the _validator_ directory
 
 - [Validator node Installation Guide](validator/Configuration&Installation.md)
 
-### Tools - Block Explorer
+<!-- ### Tools - Block Explorer
 
 - [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
 
 ### Tools - Permissioning DApp
 
 - [Permissioning DApp](docs/permissioning-dapp.md)
+-->
 
 ## Red B Monitor
 
