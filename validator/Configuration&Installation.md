@@ -1,4 +1,4 @@
-# Regular Node Installation (with Binaries)
+# Validator Node Installation (with Binaries)
 
 If not created, createa a symbolic link to the binaries (_bin_) and the _lib_ directory of the Besu version you are interested in.
 
@@ -7,7 +7,13 @@ cd validator
 ln -s /mnt/alastria-node-besu/versionesBesu/besu-1.4.3/bin bin
 ln -s /mnt/alastria-node-besu/versionesBesu/besu-1.4.3/lib lib
 ```
-
+## Prerequisites
+Install [Java JDK](https://www.oracle.com/java/technologies/javase-downloads.html) 11+
+```sh
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt update
+sudo apt-get install oracle-java15-installer
+```
 ## Besu node configuration
 
 In the directory **config** are the files _config.toml_ and _genesis.json_.
