@@ -4,8 +4,8 @@ If not created, create a symbolic link to the binaries (_bin_) and the _lib_ dir
 
 ```sh
 cd regular
-ln -s /mnt/alastria-node-besu/versionesBesu/besu-1.4.3/bin bin
-ln -s /mnt/alastria-node-besu/versionesBesu/besu-1.4.3/lib lib
+ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/bin bin
+ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/lib lib
 ```
 
 ## Besu node configuration
@@ -15,7 +15,7 @@ In the directory **config** are the files _config.toml_ and _genesis.json_.
 A new private key will be created and the public key and node address will be obtained. The following commands will be executed.
 
 ```sh
-cd /mnt/alastria-node-besu/regular
+cd /data/alastria-node-besu/regular
 bin/besu --data-path=. public-key export --to=key.pub
 bin/besu --data-path=. public-key export-address --to=nodeAddress
 ```
@@ -42,7 +42,7 @@ In order to control the Node logs, Besu allows you to [configure your logs](http
     <Console name="Console" target="SYSTEM_OUT">
         <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSSZZZ} | %t | %-5level | %c{1} | %msg %throwable{short.message}%n" />
     </Console>
-    <RollingFile name="RollingFile" fileName="/mnt/alastria-node-besu/regular/besu/logs/besu.log" filePattern="/mnt/alastria-node-besu/regular/besu/logs/besu-%d{yyyyMMdd}-%i.log.gz" >
+    <RollingFile name="RollingFile" fileName="/data/alastria-node-besu/regular/besu/logs/besu.log" filePattern="/data/alastria-node-besu/regular/besu/logs/besu-%d{yyyyMMdd}-%i.log.gz" >
         <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSSZZZ} | %t | %-5level | %c{1} | %msg %throwable{short.message}%n" />
         <!-- Logs in JSON format
         <PatternLayout alwaysWriteExceptions="false" pattern='{"timestamp":"%d{ISO8601}","container":"${hostName}","level":"%level","thread":"%t","class":"%c{1}","message":"%msg","throwable":"%enc{%throwable}{JSON}"}%n'/>
@@ -80,13 +80,13 @@ The folder structure will be as follows.
 ```sh
 drwxrwxr-x 7 besu besu     4096 Oct 23 10:09 ./
 drwxr-xr-x 9 besu besu     4096 Oct 21 14:01 ../
-lrwxrwxrwx 1 besu besu       29 Oct 21 10:49 bin -> ../versionBesu/besu-1.5.0/bin/
+lrwxrwxrwx 1 besu besu       29 Oct 21 10:49 bin -> /data/alastria-node-besu/versionBesu/besu-20.10.2/bin/
 drwxrwxr-x 3 besu besu     4096 Oct 21 10:38 config/
 drwxr-xr-x 3 besu besu     4096 Oct 21 10:38 keys/
-lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> ../versionBesu/besu-1.5.0/lib/
+lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> /data/alastria-node-besu/versionBesu/besu-20.10.2/lib/
 
 .
-├── bin -> ../versionBesu/besu-1.5.0/bin
+├── bin -> /data/alastria-node-besu/versionBesu/besu-20.10.2/bin
 ├── config
 │   └── besu
 │       ├── config.toml
@@ -97,7 +97,7 @@ lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> ../versionBesu/besu-1.5.0/li
 │       ├── key
 │       ├── key.pub
 │       └── nodeAddress
-└── lib -> ../versionBesu/besu-1.5.0/lib
+└── lib -> /data/alastria-node-besu/versionBesu/besu-20.10.2/lib
 ```
 
 ## Execution of the Demon of Besu
@@ -117,15 +117,15 @@ The following variables will be put in this file: `StartLimitBurst` and `Restart
 [Unit]
 Description=Service to init besu service on boot
 After=network.target
-StartLimitBurst=5
-StartLimitIntervalSec=200
 
 [Service]
-WorkingDirectory=/mnt/alastria-node-besu/regular/
-Environment=LOG4J_CONFIGURATION_FILE=/mnt/alastria-node-besu/regular/config/besu/log-config.xml
+StartLimitBurst=5
+StartLimitIntervalSec=200
+WorkingDirectory=/data/alastria-node-besu/regular/
+Environment=LOG4J_CONFIGURATION_FILE=/data/alastria-node-besu/regular/config/besu/log-config.xml
 Type=simple
 User=besu
-ExecStart=/mnt/alastria-node-besu/regular/bin/besu --config-file="/mnt/alastria-node-besu/regular/config/besu/config.toml"
+ExecStart=/data/alastria-node-besu/regular/bin/besu --config-file="/data/alastria-node-besu/regular/config/besu/config.toml"
 Restart=always
 RestartSec=30
 
@@ -163,7 +163,7 @@ Getting the following result.
  Main PID: 19089 (java)
     Tasks: 73 (limit: 4680)
    CGroup: /system.slice/besu.service
-           └─19089 java -Dvertx.disableFileCPResolving=true -Dbesu.home=/mnt/alastria-node-besu/regular -Dlog4j.shutdownHookEnabled=false --add-
+           └─19089 java -Dvertx.disableFileCPResolving=true -Dbesu.home=/data/alastria-node-besu/regular -Dlog4j.shutdownHookEnabled=false --add-
 
 Oct 28 17:36:35 besu1 besu[19089]: 2020-10-28 17:36:35.023+00:00 | pool-8-thread-1 | INFO  | IbftRound | Importing block to
 Oct 28 17:36:37 besu1 besu[19089]: 2020-10-28 17:36:37.022+00:00 | pool-8-thread-1 | INFO  | IbftRound | Importing block to
@@ -201,12 +201,12 @@ drwxr-xr-x 9 besu besu     4096 Oct 21 14:01 ../
 -rw-r--r-- 1 besu besu       13 Oct 22 13:45 DATABASE_METADATA.json
 -rw-r--r-- 1 besu besu      219 Oct 23 10:09 besu.networks
 -rw-r--r-- 1 besu besu      205 Oct 23 10:09 besu.ports
-lrwxrwxrwx 1 besu besu       29 Oct 21 10:49 bin -> ../versionBesu/besu-1.5.0/bin/
+lrwxrwxrwx 1 besu besu       29 Oct 21 10:49 bin -> /data/alastria-node-besu/versionBesu/besu-20.10.2/bin/
 drwxr-xr-x 2 besu besu     4096 Oct 22 13:45 caches/
 drwxrwxr-x 3 besu besu     4096 Oct 21 10:38 config/
 drwxr-xr-x 2 besu besu     4096 Oct 23 10:09 database/
 drwxr-xr-x 3 besu besu     4096 Oct 21 10:38 keys/
-lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> ../versionBesu/besu-1.5.0/lib/
+lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> /data/alastria-node-besu/versionBesu/besu-20.10.2/lib/
 drwxrwxr-x 2 besu besu     4096 Oct 28 16:59 logs/
 drwxrwxr-x 2 besu besu     4096 Oct 21 14:54 uploads/
 ```

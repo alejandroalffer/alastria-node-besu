@@ -75,3 +75,7 @@ Use the _validator_ directory
 ## Red B Initial Schema (2020-01)
 
 ![Red B Initial Schema](./docs/AlastriaRedB.png)
+
+## Steps to mount a dedicated disk
+
+- [How to mount a dedicated disk](docs/mount-dedicated-disk.md)
