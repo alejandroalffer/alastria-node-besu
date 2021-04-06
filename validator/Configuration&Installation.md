@@ -109,6 +109,11 @@ lrwxrwxrwx 1 besu besu       29 Oct 21 11:00 lib -> /data/alastria-node-besu/ver
 
 ## Execution of the Demon of Besu
 
+**Note**: Due to a bug found, the network fails to synchronise all the blocks and stops at block 5484841. Therefore we recommend to follow the following steps (until the bug is solved):
+- Modify the symbolic links and make them point to version 1.4.3.
+- Synchronise the whole network.
+- Stop the node (sudo systemctl stop besu.service), modify the symbolic link back to 20.10.2 and start the node again (sudo systemctl start besu.service).
+
 In this section, a daemon will be created to execute the Besu node in case of VM crashes, unexpected restarts, etc.
 
 The first thing is to create the file for the besu service. To do this, the following steps will be followed.
