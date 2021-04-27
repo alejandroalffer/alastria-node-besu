@@ -1,13 +1,20 @@
 # Regular Node Installation (with Binaries)
 
+First of all, install a Java interpreter on your system:
+
+```sh
+$ sudo add-apt-repository ppa:linuxuprising/java
+$ sudo apt update
+$ sudo apt-get install oracle-java15-installer
+```
+
 If not created, create a symbolic link to the binaries (_bin_) and the _lib_ directory of the Besu version you are interested in.
 
 ```sh
-cd regular
-ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/bin bin
-ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/lib lib
+$ cd regular
+$ sudo ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/bin bin
+$ sudo ln -s /data/alastria-node-besu/versionesBesu/besu-20.10.2/lib lib
 ```
-
 ## Besu node configuration
 
 In the directory **config** are the files _config.toml_ and _genesis.json_.
@@ -15,17 +22,17 @@ In the directory **config** are the files _config.toml_ and _genesis.json_.
 A new private key will be created and the public key and node address will be obtained. The following commands will be executed.
 
 ```sh
-cd /data/alastria-node-besu/regular
-bin/besu --data-path=. public-key export --to=key.pub
-bin/besu --data-path=. public-key export-address --to=nodeAddress
+$ cd /data/alastria-node-besu/regular
+$ bin/besu --data-path=. public-key export --to=key.pub
+$ bin/besu --data-path=. public-key export-address --to=nodeAddress
 ```
 
 Here the keys 'key', 'key.pub' and 'nodeAddress' will have been generated and there gonna be stored in the **keys/besu** directory.
 
 ```sh
-mv key keys/besu
-mv key.pub keys/besu
-mv nodeAddress keys/besu
+$ mv key keys/besu
+$ mv key.pub keys/besu
+$ mv nodeAddress keys/besu
 ```
 
 In order to control the Node logs, Besu allows you to [configure your logs](https://besu.hyperledger.org/en/1.3.0-rc1/HowTo/Troubleshoot/Logging/) thanks to [log4j2](https://logging.apache.org/log4j/2.x/manual/configuration.html), being able to change the format in which you take them out, if you make rotations, if you compress the new files, how many you save and where you save them, etc. To do this, a file called **log-config.xml** is stored in _config/besu_.
@@ -114,8 +121,8 @@ In this section, a daemon will be created to execute the Besu node in case of VM
 The first thing is to create the file for the besu service. To do this, the following steps will be followed.
 
 ```sh
-cd /lib/systemd/system
-sudo vim besu.service
+$ cd /lib/systemd/system
+$ sudo vim besu.service
 ```
 
 The following variables will be put in this file: `StartLimitBurst` and `RestartSec` will cause it to make 5 restart attempts every 10s and if it fails at all it will stop trying. As an environment variable `LOG4J_CONFIGURATION_FILE` the path to the log configuration file seen in previous steps will be passed to you.
@@ -145,20 +152,20 @@ Once the _besu.services_ file has been saved, needs to be started. The following
 To let the system know that there is a new daemon that must be started at every boot, the following will be executed:
 
 ```sh
-sudo systemctl daemon-reload
-sudo systemctl enable besu.service
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable besu.service
 ```
 
 To start the Besu service the following command will be executed.
 
 ```sh
-sudo systemctl start besu.service
+$ sudo systemctl start besu.service
 ```
 
 Finally, to ensure that the service is correctly started it will run:
 
 ```sh
-sudo systemctl status besu.service
+$ sudo systemctl status besu.service
 ```
 
 Getting the following result.
@@ -187,7 +194,7 @@ Oct 28 17:36:53 besu1 besu[19089]: 2020-10-28 17:36:53.026+00:00 | pool-8-thread
 If you look at the log file you have generated you will see the following result.
 
 ```sh
-tail -f besu.log
+$ tail -f besu.log
 
 Oct 23 11:40:10 besu1 Besu[1101]: 2020-10-23 11:40:10.024+00:00 | pool-8-thread-1 | INFO  | IbftRound | Importing block to chain. round=ConsensusRoundIdentifier{Sequence=44673, Round=0}, hash=0x429fd859a821b5ade91fdf18060c54cc07225f13ee22fca1c90cab5a96b8a6d5
 Oct 23 11:40:12 besu1 Besu[1101]: 2020-10-23 11:40:12.026+00:00 | pool-8-thread-1 | INFO  | IbftRound | Importing block to chain. round=ConsensusRoundIdentifier{Sequence=44674, Round=0}, hash=0x927481f3e7414c145adc42a81b627da338d433e4a38e9d0bdca0d7e2a4b11232

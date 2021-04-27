@@ -9,7 +9,7 @@ This page contains technical information needed to add a node in the Alastria Be
 
 ## System requirements
 
-**Operating System**: Ubuntu 16.04 / 18.04 LTS 64 bits
+**Operating System**: Ubuntu 16.04/18.04/20.04 LTS 64 bits
 
 **Hardware**:
 
@@ -19,11 +19,11 @@ This page contains technical information needed to add a node in the Alastria Be
 | **Memory**:    | 4 Gb    | 8 Gb    |
 | **Hard Disk**: | 100 Gb  | 1000 Gb |
 
-### TCP/UDP PORTS
+## TCP/UDP PORTS
 
 You'll need to open the following ports in both ways to deploy a node:
 
-#### Validator Node
+### Validator Node
 
 | Port  | Type |      To       | Definition                                   |
 | :---: | :--: | :-----------: | :------------------------------------------- |
@@ -32,7 +32,7 @@ You'll need to open the following ports in both ways to deploy a node:
 | 8080  | TCP  |    0.0.0.0    | Orion port (private transactions)            |
 | 9545  | TCP  | 185.180.8.152 | External Prometheus metrics                  |
 
-#### Regular Node
+### Regular Node
 
 | Port  | Type |                 To                  | Definition                                   |
 | :---: | :--: | :---------------------------------: | :------------------------------------------- |
@@ -45,15 +45,19 @@ You'll need to open the following ports in both ways to deploy a node:
 
 ## Installation & configuration of
 
+## Steps to mount a dedicated disk
+
+First, consider the following guide to add a dedicated disk](docs/mount-dedicated-disk.md) for the node, independent of the system disk.
+
 ### Regular node
 
-Use the _regular_ directory
+Use the _regular_ directory:
 
 - [Regular node Installation Guide](regular/Configuration&Installation.md)
 
 ### Validator node
 
-Use the _validator_ directory
+Use the _validator_ directory:
 
 - [Validator node Installation Guide](validator/Configuration&Installation.md)
 
@@ -75,7 +79,3 @@ Use the _validator_ directory
 ## Red B Initial Schema (2020-01)
 
 ![Red B Initial Schema](./docs/AlastriaRedB.png)
-
-## Steps to mount a dedicated disk
-
-- [How to mount a dedicated disk](docs/mount-dedicated-disk.md)
