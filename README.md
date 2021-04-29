@@ -3,72 +3,161 @@
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://alastria.slack.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/alastria/alastria-node/blob/testnet2/LICENSE)
 
-- Visit [What is alastria](https://alastria.io/en/) page to know more about us.
+## Introduction
 
-This page contains technical information needed to add a node in the Alastria Besu Network (Alastria Red B)
+Alastria-T Network is a public-permissioned Blockchain network that uses the [Hyperledger BESU](https://www.hyperledger.org/use/besu) technology, [IBFT 2.0](https://besu.hyperledger.org/en/stable/Tutorials/Private-Network/Create-IBFT-Network/) consensus algorithm, and it's managed by [Alastria](https://alastria.io/en/) partners, :vulcan_salute:.
+
+Please, consider reading this references if you are new in Blockchain or Ethereum:
+* https://besu.hyperledger.org/en/stable/
+* https://wiki.hyperledger.org/display/BESU/Hyperledger+Besu
+
+If you like you know more about Hyperledger Ecosystem, this [link](https://www.hyperledger.org/use/tutorials) are a good start.
+
+## Administrative requirements
+
+All [Alastria](https://alastria.io/en/) partners can add it's own node. Just contact with `soporte@alastria.io`, and perform the administrative permission.
+
+All nodes that will be installed in the Alastria Networks must be permissioned. To ask for permission you must enter your data in this [electronic form](https://portal.r2docuo.com/alastria/forms/noderequest) and make a PR for the files that are modified in the installation process. If an associated will want to remove a node from the network, it is kindly appreciated that a a request must be notified through a PR. Other guides related with operation of Alastria Node are available in following documents:
+
+* Alastria-B Network Operation and Government Policies [(en_GB)](https://alastria.io/wp-content/uploads/2020/04/POLI-TICAS-GOBIERNO-Y-OPERACIO-N-RED-ALASTRIA-V1.01-DEF-en-GB.pdf), [(es_ES)](https://alastria.io/wp-content/uploads/2020/04/POLI-TICAS-GOBIERNO-Y-OPERACIO-N-RED-ALASTRIA-V1.01-DEF.pdf)
+
+* Conditions of operation of the Alastria-B Network Regular Nodes [(en_GB)](https://alastria.io/wp-content/uploads/2020/06/CONDICIONES-USO-RED-NODOS-REGULARES-A-LA-RED-ALASTRIA-v1.1-DEF-en-GB.pdf), [(es_ES)](https://alastria.io/wp-content/uploads/2020/06/CONDICIONES-USO-RED-NODOS-REGULARES-A-LA-RED-ALASTRIA-v1.1-DEF.pdf)
+
+* Conditions of operation of the Alastria-B Network Critical (boot && validator) Nodes [(en_GB)](https://alastria.io/wp-content/uploads/2020/06/CONDICIONES-OPERACIO-N-RED-T-POR-PARTE-DE-NODOS-CRI-TICOS-V1.1-DEF-en-GB.pdf), [(es_ES)](https://alastria.io/wp-content/uploads/2020/06/CONDICIONES-OPERACIO%CC%81N-RED-T-POR-PARTE-DE-NODOS-CRI%CC%81TICOS-V1.1-DEF.pdf)
+
+If a member wants to remove a node from the network, it is kindly appreciated a **removal request** via this same [electronic form](https://portal.r2docuo.com/alastria/forms/noderequest).
 
 ## System requirements
 
-**Operating System**: Ubuntu 16.04/18.04/20.04 LTS 64 bits
+**Operating System**: Ubuntu 16.04/18.04/20.04 LTS 64 bits. CentOS, Redhat,... and other _rpm_ systems are also allowed.
+
+**Hosting**: Euro Zone, in order to complain GRPD directives.
 
 **Hardware**:
 
 | Hardware       | minimum | desired |
-| :------------- | :------ | :------ |
+| :---           | :---    | :---    |
 | **CPU's**:     | 2       | 4       |
 | **Memory**:    | 4 Gb    | 8 Gb    |
-| **Hard Disk**: | 100 Gb  | 1000 Gb |
+| **Hard Disk**: | 64 Gb   | 256 Gb  |
 
-## TCP/UDP PORTS
+Blockchain database takes about 32Gb at mid-2021, and grows 1Gb/month, so consider the amount of provisioned space.
+
+## Firewall configuration
 
 You'll need to open the following ports in both ways to deploy a node:
 
-### Validator Node
+### Incoming rules
 
-| Port  | Type |      To       | Definition                                   |
-| :---: | :--: | :-----------: | :------------------------------------------- |
-| 30303 | TCP  |    0.0.0.0    | Ethereum client listener and discovery ports |
+| Port  | Type |      From:    | Definition                                   |
+| :---  | :--  | :---          | :---                                         |
+| 30303 | TCP  |    0.0.0.0    | Ethereum client data transfer ports          |
 | 30303 | UDP  |    0.0.0.0    | Ethereum client listener and discovery ports |
-| 8080  | TCP  |    0.0.0.0    | Orion port (private transactions)            |
 | 9545  | TCP  | 185.180.8.152 | External Prometheus metrics                  |
 
-### Regular Node
+Notes:
+* Logging from `185.180.8.152` it's need in order to pull metrics from - [Red B Network Monitor](https://alastria-netstats2.planisys.net:8443/?orgId=1) (Thanks [Planisys](https://www.planisys.net/))
 
-| Port  | Type |                 To                  | Definition                                   |
-| :---: | :--: | :---------------------------------: | :------------------------------------------- |
-| 30303 | TCP  |               0.0.0.0               | Ethereum client listener and discovery ports |
-| 30303 | UDP  |               0.0.0.0               | Ethereum client listener and discovery ports |
-| 8080  | TCP  |               0.0.0.0               | Orion port (private transactions)            |
-| 8545  | TCP  | 0.0.0.0 (this can be internal only) | RPC HTTP Port                                |
-| 8546  | TCP  | 0.0.0.0 (this can be internal only) | RPC WS Port                                  |
-| 9545  | TCP  |            185.180.8.152            | External Prometheus metrics                  |
+Optional ports:
 
-## Installation & configuration of
+| Port  | Type |     From:       | Definition                                        |
+| :---  | :--  | :---            | :---                                              |
+| 8080  | TCP  | (orion parners) | Orion port (in case you use private transactions) |
+| 8545  | TCP  |  (web3 client)  | json+rpc (in case you use remix/truffle/.../web3) |
+| 8546  | TCP  |  (web3 client)  | json+ws (in case you use remix/truffle/.../web3)  |
 
-## Steps to mount a dedicated disk
+Notes:
+* :danger: Please, be very carefull opening web3 ports: this protocols do not have enabled (natively) neither authentication nor encryption!
+* :danger: Opening web3 ports, can be tunning `/data/alastria-node-besu/regular/config/besu/config.toml` file: listening interface, `web3` methods available,...
+* Ninja sysadmins dont't use outbound firewall rules :joy:
+## Installation
 
-First, consider the following guide to add a dedicated disk](docs/mount-dedicated-disk.md) for the node, independent of the system disk.
+The following guide its ready for installation in a dedicated machine (Baremetal, VirtualMachine,...), with data files in `/data` partition. 
+**Please**, consider the following guide to add a [dedicated disk](docs/mount-dedicated-disk.md) for the node database, independent of the system disk.
 
-### Regular node
+### Installation Type
 
-Use the _regular_ directory:
+* Users who what to deploy Web3 applications should use [Regular node Installation Guide](docs/Regular-Configuration&Installation.md)
+* Users who whats helping the availability, can add a [Validator](docs/Validator-Configuration&Installation.md) or [Regular](docs/Validator-Configuration&Installation.md) node. Keep in mind the dedicated use of these nodes, and the special considerations for these core nodes.
 
-- [Regular node Installation Guide](regular/Configuration&Installation.md)
+## Help!
+### Slack
 
-### Validator node
+Alastria has a group of channels available on `Slack` message platform, at `alastria.slack.com`. You need to be invited to get into the channels, for it, you have to send a mail to `support@alastria.io` asking to join the channel giving the following information:
 
-Use the _validator_ directory:
+* Name and Company representing
+* e-mail address to be added.
+* channels list where to be joined.
 
-- [Validator node Installation Guide](validator/Configuration&Installation.md)
+### Available channels by default
+When you are accepted in the Alastria Slack group, you are automatically included in
 
-<!-- ### Tools - Block Explorer
+* `#general` General purpose channel (public)
+* `#notificaciones` Notifications Github channel (public)
 
-- [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
+You could self-add to the following channels:
 
-### Tools - Permissioning DApp
+* `#besu-group` Channel for the red-B team, :ninja:
 
-- [Permissioning DApp](docs/permissioning-dapp.md)
--->
+### Open an issue
+
+If you need to open an Issue on the [alastria-node-besu](https://github.com/alastria/alastria-node-besu), please follow the instructions [here](https://help.github.com/articles/creating-an-issue/).
+
+### Create a pull request
+
+If you want to do a pull request on the [alastria-node-besu](https://github.com/alastria/alastria-node-besu) repository, please follow [these](https://services.github.com/on-demand/github-cli/open-pull-request-github) instructions.
+
+
+## FAQ
+
+* How launch an interactive console, for debug problems:
+
+```sh
+$ sudo /data/alastria-node-besu/regular/bin/besu --config-file="/data/alastria-node-besu/regular/config/besu/config.toml"
+```
+
+* How to know if the node its already permissioned?
+
+```
+2021-04-29 14:58:44.465+00:00 | EthScheduler-Services-5 (importBlock) | INFO  | FullImportBlockStep | Import reached block 10145800 (0x82c9..ea34), Peers: 1
+```
+
+The last column should show, at least, one "peer".
+
+* How to know if the node has finished syncing?
+
+```sh
+$ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://127.0.0.1:8545
+```
+
+* How to `admin` the node?
+
+Enable ADMIN object at the node, and add "ADMIN" to the list of supported methods:
+
+```sh
+$ sudo vim /data/alastria-node-besu/regular/config/besu/config.toml
+
+[...]
+rpc-http-api=["ADMIN", "ETH","NET","WEB3"]
+[...]
+```
+
+```sh
+$ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_peers","params":[],"id":1}' http://127.0.0.1:8545
+$ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id":1}' http://127.0.0.1:8545
+```
+
+Other `ADMIN` methods, in https://besu.hyperledger.org/en/stable/Reference/API-Methods/
+
+* Will the functionality (docker | ansible | whatever) be supported soon? 
+
+It's in your hands! Alastria is an open group, and everyone is welcome to contribute. If you need any functionality, we will help you :hugging_face:
+
+* Connection from Remix
+(TBD)
+
+* Connection from Truffle
+(TBD)
 
 ## Red B Monitor
 
@@ -76,6 +165,9 @@ Use the _validator_ directory:
 - [Red B Block Explorer - Hosted by Eurogestión](http://5.153.57.78)
 - [Red B Permissioning DApp - Hosted by Eurogestión](http://5.153.57.78:3000/)
 
-## Red B Initial Schema (2020-01)
+## Other Guides - Internal documentation for `red B` core admins:
 
-![Red B Initial Schema](./docs/AlastriaRedB.png)
+* [Red B Initial Schema](docs/AlastriaRedB.png)
+* [Alethio Lite Explorer Installation Guide](docs/blockexplorer-installation.md)
+* [Permissioning DApp](docs/permissioning-dapp.md)
+* [Genesys file Description](docs/about-genesis-file.md)
