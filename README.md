@@ -39,9 +39,9 @@ If a member wants to remove a node from the network, it is kindly appreciated a 
 | :---           | :---    | :---    |
 | **CPU's**:     | 2       | 4       |
 | **Memory**:    | 4 Gb    | 8 Gb    |
-| **Hard Disk**: | 64 Gb   | 256 Gb  |
+| **Hard Disk**: | 32 Gb   | 256 Gb  |
 
-Blockchain database takes about 32Gb at mid-2021, and grows 1Gb/month, so consider the amount of provisioned space.
+Blockchain database takes about 16Gb at mid-2021, and grows 2Gb/month, so consider the amount of provisioned space for chache, logs,...
 
 ## Firewall configuration
 
