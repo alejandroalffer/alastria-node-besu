@@ -13,6 +13,13 @@ $ sudo apt-get install oracle-java15-installer
 * Let's clone the _repo_ from `red B` project to `/data` directory:
 
 ```sh
+$ sudo mkdir /data
+```
+
+* In case you have chosen the right :pill:, be sure that you have mounted the [dedicated disk](docs/mount-dedicated-disk.md) in this folder:
+
+```sh
+$ sudo mount /data
 $ cd /data
 $ sudo git clone https://github.com/alastria/alastria-node-besu.git
 ```

@@ -1,4 +1,4 @@
-# ALASTRIA Red B
+# ALASTRIA red B
 
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://alastria.slack.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/alastria/alastria-node/blob/testnet2/LICENSE)
@@ -11,7 +11,7 @@ Please, consider reading this references if you are a _rookie_ in Blockchain or 
 * https://besu.hyperledger.org/en/stable/
 * https://wiki.hyperledger.org/display/BESU/Hyperledger+Besu
 
-If you like you know more about Hyperledger Ecosystem, this [link](https://www.hyperledger.org/use/tutorials) are a good start.
+If you like you know more about [Hyperledger](https://www.hyperledger.org/) Ecosystem, this [link](https://www.hyperledger.org/use/tutorials) are a good start.
 
 ## Administrative requirements
 
@@ -45,7 +45,7 @@ Blockchain database takes about 32Gb at mid-2021, and grows 1Gb/month, so consid
 
 ## Firewall configuration
 
-You'll need to open the following ports in both ways to deploy a node:
+You'll need to open the following ports to deploy a node:
 
 ### Incoming rules
 
@@ -56,7 +56,7 @@ You'll need to open the following ports in both ways to deploy a node:
 | 9545  | TCP  | 185.180.8.152 | External Prometheus metrics                  |
 
 Notes:
-* Logging from `185.180.8.152` it's need in order to pull metrics from [Red B Network Monitor](https://alastria-netstats2.planisys.net:8443/?orgId=1) (Thanks [Planisys](https://www.planisys.net/) :raised_hands:)
+* Logging from `185.180.8.152` it's need in order to pull metrics from `red B` [Network Monitor](https://alastria-netstats2.planisys.net:8443/?orgId=1) (Thanks [Planisys](https://www.planisys.net/) :raised_hands:)
 
 ### Optional ports:
 
@@ -69,7 +69,7 @@ Notes:
 Notes:
 * :warning: Please, be very carefull opening web3 ports: this protocols do not have enabled (natively) neither authentication nor encryption!
 * :warning: Opening web3 ports, can be tuned in `/data/alastria-node-besu/regular/config/besu/config.toml` file: listening interface, `web3` methods available,...
-* Ninja sysadmins dont't use outbound firewall rules :joy:
+* Ninja sysadmins don't use outbound firewall rules :joy:
 ## Installation
 
 The following guide its ready for installation in a dedicated machine (Baremetal, VirtualMachine,...), with data files in `/data` partition. 
@@ -97,7 +97,7 @@ When you are accepted in the Alastria Slack group, you are automatically include
 
 You could self-add to the following channels:
 
-* `#besu-group` Channel for the red-B team, :beer:
+* `#besu-group` Channel for the `red B` team, :beer:
 
 ### Open an issue
 
