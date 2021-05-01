@@ -78,12 +78,12 @@ The following guide is ready for installation on a dedicated machine (bare metal
 ### Installation Type
 
 * Users who want deploy applications should use [Regular node Installation Guide](docs/Regular-Configuration&Installation.md)
-* Users who would like to improve the availability of the network, can add a [Validator](docs/Validator-Configuration&Installation.md) or [Regular](docs/Validator-Configuration&Installation.md) node. Keep in mind the dedicated use of these nodes and the special security considerations for these core nodes.
+* Users who want to improve the availability of the network should add [Validator](docs/Validator-Configuration&Installation.md) or [Regular](docs/Validator-Configuration&Installation.md) node. Keep in mind the dedicated use of these nodes and the special security considerations for these core nodes.
 
 ## Help! :fire_extinguisher:
 ### Slack
 
-[Alastria](https://alastria.io/en/) has a group of channels available on `Slack` message platform, at `alastria.slack.com`. You need to be invited, for it, please send a mail to support@alastria.io asking to join the channel. Provide the following information:
+[Alastria](https://alastria.io/en/) has a group of channels available on `Slack` message platform, url: `alastria.slack.com`. You need to be invited, for it, please send a email to support@alastria.io asking to join the channel. Provide the following information:
 
 * Name and organization.
 * e-mail address to be added.
@@ -153,7 +153,7 @@ Other `ADMIN` methods, in https://besu.hyperledger.org/en/stable/Reference/API-M
 
 * Will the functionality (docker | ansible | whatever) be supported soon? 
 
-It's in your hands! [Alastria](https://alastria.io/en/) is an open group and everyone is welcome to contribute. If you need any functionality we are here to help :hugs:
+It's in your hands! [Alastria](https://alastria.io/en/) is an open group and everyone is welcome to contribute. If you need any support we are here to help :hugs:
 
 * Connection from Remix
 (TBD)
