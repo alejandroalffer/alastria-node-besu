@@ -7,7 +7,7 @@
 ```sh
 $ sudo add-apt-repository ppa:linuxuprising/java
 $ sudo apt update
-$ sudo apt-get install oracle-java15-installer
+$ sudo apt-get install oracle-java16-installer
 ```
 
 * Let's clone the _repo_ from `red B` project to `/data` directory:
